@@ -3,8 +3,8 @@ import { Route } from 'react-router-dom'
 import data from './data'
 
 // Contexts
-import ProductContext from './contexts/ProductContext'
-import CartContext from './contexts/CartContext'
+import { ProductsContext } from './contexts/ProductsContext'
+import { CartContext } from './contexts/CartContext'
 
 // Components
 import Navigation from './components/Navigation'
@@ -22,17 +22,17 @@ function App() {
   return (
     <div className="App">
       <CartContext.Provider value={cart}>
-        <ProductContext.Provider value={{ products, addItem }}>
+        <ProductsContext.Provider value={{ products, addItem }}>
           <Navigation cart={cart} />
-        </ProductContext.Provider>
+        </ProductsContext.Provider>
       </CartContext.Provider>
 
       {/* Routes */}
       <CartContext.Provider value={cart}>
-        <ProductContext.Provider value={{ products, addItem }}>
+        <ProductsContext.Provider value={{ products, addItem }}>
           <Route exact path="/" component={Products} />
           <Route path="/cart" component={ShoppingCart} />
-        </ProductContext.Provider>
+        </ProductsContext.Provider>
       </CartContext.Provider>
     </div>
   )
